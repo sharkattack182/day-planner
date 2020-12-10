@@ -17,6 +17,9 @@ window.onload = function () {
     var currentTime = moment().format('HH');
     console.log(currentTime)
     for (var i = 8; i < 17; i++) {
+        // getting items form local storage
+
+
         // creating the elements of the time block dynamically
         var newRow = $("<div>");
         var newHour = $("<div>");
@@ -65,7 +68,11 @@ window.onload = function () {
     $(".saveBtn").on("click", function () {
         console.log("pressed");
         console.log(this.id);
+        // set the text val variable to the value of the textarea that has a matching class
         var textVal = $("." + this.id).val();
-        console.log(textVal)
+        console.log(textVal);
+
+        // set the local storage
+        localStorage.setItem(this.id, textVal);
     })
 }
