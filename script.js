@@ -21,20 +21,24 @@ window.onload = function() {
         var newRow = $("<div>");
         var newHour = $("<div>");
         var newInput = $("<textarea>");
+        var newSaveButton = $("<div>");
 
         // adding the classes to the new time elements
         newRow.addClass("row time-block");
         newHour.addClass("hour col-md-1");
         newInput.addClass("description col-md-10 col-sm-8");
+        newSaveButton.addClass("saveBtn col-md-1")
 
         // will need an if statement here for determining the color of the div
 
         // adding the text content
         newHour.text(i)
+        newSaveButton.html('<i class="fas fa-save"></i>');
 
         // appending each item to the row then the row to the container
         newRow.append(newHour);
         newRow.append(newInput);
+        newRow.append(newSaveButton);
         hourlyDisplay.append(newRow);
     }
 
