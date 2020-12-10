@@ -30,7 +30,13 @@ window.onload = function() {
         newSaveButton.addClass("saveBtn col-md-1")
 
         // will need an if statement here for determining the color of the div
-
+        if(i < currentTime) {
+            newInput.addClass("past");
+        } else if(i = currentTime) {
+            newInput.addClass("present");
+        } else {
+            newInput.addClass("future");
+        }
         // adding the text content
         newHour.text(i)
         newSaveButton.html('<i class="fas fa-save"></i>');
