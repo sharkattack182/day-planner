@@ -9,14 +9,14 @@ var currentDay = $("#currentDay");
 //      military time
 // need to set current hour and track the hour to set colors in the divs
 
-window.onload = function() {
+window.onload = function () {
     // sets the date and time in the header
     currentDay.text(moment().format('dddd MMMM Do YYYY'));
 
     // sets the current time to a variable theHH makes it military time so i dont have to deal with AM/PM
     var currentTime = moment().format('HH');
     console.log(currentTime)
-    for(var i = 8; i < 17; i++) {
+    for (var i = 8; i < 17; i++) {
         // creating the elements of the time block dynamically
         var newRow = $("<div>");
         var newHour = $("<div>");
@@ -26,23 +26,21 @@ window.onload = function() {
         // adding the classes to the new time elements
         newRow.addClass("row time-block");
         newHour.addClass("hour col-md-1");
-        newInput.addClass("description col-md-10 col-sm-8");
+        newInput.addClass(i + " description col-md-10 col-sm-8");
         newSaveButton.addClass("saveBtn col-md-1")
 
-        // will need an if statement here for determining the color of the div
-        if(i < currentTime) {
-            newInput.addClass("past");
-        } else if(i = currentTime) {
-            newInput.addClass("present");
-        } else {
-            newInput.addClass("future");
-        }
         // adding the text content
-        newHour.text(i)
+        if (i < 13) {
+            newHour.text(i);
+        } else {
+            newHour.text(i - 12)
+        };
+
         newSaveButton.html('<i class="fas fa-save"></i>');
 
         // adding data attributes
         newSaveButton.attr("id", i);
+        newInput.attr("id", "textArea");
 
         // appending each item to the row then the row to the container
         newRow.append(newHour);
@@ -51,8 +49,20 @@ window.onload = function() {
         hourlyDisplay.append(newRow);
     }
 
+
+    // will need an if statement here for determining the color of the div
+    // this switch statement is breaking the code for some reason when i put it inside the loop
+     //     if(i < currentTime) {
+    //     newInput.addClass("past");
+    // } else if(i = currentTime) {
+    //     newInput.addClass("present");
+    // } else {
+    //     newInput.addClass("future");
+    // }
+
+
     // adding save button function
-    $(".saveBtn").on("click", function() {
+    $(".saveBtn").on("click", function () {
         console.log("pressed");
         console.log(this.id);
     })
