@@ -15,10 +15,11 @@ window.onload = function () {
 
     // sets the current time to a variable theHH makes it military time so i dont have to deal with AM/PM
     var currentTime = moment().format('HH');
-    console.log(currentTime)
-    for (var i = 8; i < 17; i++) {
-        // getting items form local storage
+    console.log(typeof currentTime)
+    var time = parseInt(currentTime);
+    console.log(typeof time)
 
+    for (var i = 8; i < 17; i++) {
 
         // creating the elements of the time block dynamically
         var newRow = $("<div>");
@@ -32,6 +33,16 @@ window.onload = function () {
         newInput.addClass(i + " description col-md-10 col-sm-8");
         newSaveButton.addClass("saveBtn col-md-1")
 
+        if(i > time) {
+            console.log("future");
+            newInput.attr("class", i + " description col-md-10 col-sm-8 future")
+        } else if(i < time) {
+            console.log("past");
+            newInput.attr("class", i + " description col-md-10 col-sm-8 past")
+        } else {
+            newInput.attr("class", i + " description col-md-10 col-sm-8 present")
+        }
+
         // adding the text content
         if (i < 13) {
             newHour.text(i);
@@ -39,7 +50,17 @@ window.onload = function () {
             newHour.text(i - 12)
         };
 
+        // getting items form local storage
+        var textContent = localStorage.getItem(i);
+        console.log(textContent);
+        if (textContent === null) {
+            newInput.text("")
+        } else {
+            newInput.text(textContent)
+        }
+
         newSaveButton.html('<i class="fas fa-save"></i>');
+
 
         // adding data attributes
         newSaveButton.attr("id", i);
@@ -55,13 +76,7 @@ window.onload = function () {
 
     // will need an if statement here for determining the color of the div
     // this switch statement is breaking the code for some reason when i put it inside the loop
-     //     if(i < currentTime) {
-    //     newInput.addClass("past");
-    // } else if(i = currentTime) {
-    //     newInput.addClass("present");
-    // } else {
-    //     newInput.addClass("future");
-    // }
+
 
 
     // adding save button function
