@@ -65,5 +65,7 @@ window.onload = function () {
     $(".saveBtn").on("click", function () {
         console.log("pressed");
         console.log(this.id);
+        var textVal = $("." + this.id).val();
+        console.log(textVal)
     })
 }
