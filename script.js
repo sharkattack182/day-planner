@@ -9,3 +9,6 @@ var currentDay = $("#currentday");
 //      military time
 // need to set current hour and track the hour to set colors in the divs
 
+window.onload = function() {
+    
+}
