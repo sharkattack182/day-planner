@@ -1,5 +1,5 @@
 var hourlyDisplay = $(".container");
-var currentDay = $("#currentday");
+var currentDay = $("#currentDay");
 // nned to build the html dthrough jquery but need to do it by the predefined classes
 // create a list fo classes and what the do
 // check the example and map it out on paper
@@ -10,5 +10,6 @@ var currentDay = $("#currentday");
 // need to set current hour and track the hour to set colors in the divs
 
 window.onload = function() {
-    
+    currentDay.text(moment().format('dddd MMMM Do YYYY'));
+
 }
