@@ -41,6 +41,9 @@ window.onload = function() {
         newHour.text(i)
         newSaveButton.html('<i class="fas fa-save"></i>');
 
+        // adding data attributes
+        newSaveButton.attr("id", i);
+
         // appending each item to the row then the row to the container
         newRow.append(newHour);
         newRow.append(newInput);
@@ -48,4 +51,9 @@ window.onload = function() {
         hourlyDisplay.append(newRow);
     }
 
+    // adding save button function
+    $(".saveBtn").on("click", function() {
+        console.log("pressed");
+        console.log(this.id);
+    })
 }
