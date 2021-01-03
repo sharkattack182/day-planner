@@ -19,3 +19,4 @@ CSS <img src="https://progress-bar.dev/21/">
 [GitHub](https://github.com/sharkattack182/day-planner)
 
 ## Visuals
+<img src="/imgs/main.PNG" alt="main">
